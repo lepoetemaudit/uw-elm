@@ -1,0 +1,22 @@
+<html>
+    <p>Hello world</p>
+
+    <script src="elm.js"></script>
+
+    <div id="embed"></div>
+    <script>
+        var embed = document.getElementById('embed');
+
+        fetch('data/strings.pak')
+            .then(function(response) {
+                return response.arrayBuffer();
+            })
+            .then(function(buf) {
+                var buf = new Uint8Array(buf);
+                var arr = Array.from(buf);
+                console.log(buf);
+                Elm.Main.embed(embed, arr);
+            });
+        
+    </script>
+</html>
